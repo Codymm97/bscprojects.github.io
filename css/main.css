@@ -1,0 +1,37 @@
+html {
+	background: #76b852; /* fallback for old browsers */
+    background: -webkit-linear-gradient(right, #708090, #5CADF6);
+    background: -moz-linear-gradient(right, #708090, #5CADF6);
+    background: -o-linear-gradient(right, #708090, #5CADF6);
+    background: linear-gradient(to left, #708090, #5CADF6);
+    font-family: "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.center {
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 1.5%;
+	font-family: Verdana;
+	color: white;
+}
+
+.code {
+	background: #e6e6e6;
+	/*margin: auto 30%;*/
+}
+
+.code-flex-box {
+	display: flex;
+	color: black;
+}
+
+.code-flex-box > div {
+  /*background-color: #f1f1f1;*/
+  margin: 0% 1%;
+  padding: 20px;
+  /*font-size: 30px;*/
+}

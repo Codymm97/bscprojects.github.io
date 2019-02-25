@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Team Dynamix C# Documentation</title>
+	<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/main.css">
+</head>
+<body>
+   <h1 class="center">C# TeamDynamix Documentation</h1>
+   <div class="code-flex-box center">
+   	<div>
+   		<p>Getting Started. HttpClient object is used to store login information as well as handle requests to TeamDynamix.</p>
+   	</div>
+   	<div><pre class="prettyprint code">HttpClient httpClient = new HttpClient();
+            string sPassword = "";
+            Console.WriteLine("Enter username:");
+            string sUsername = Console.ReadLine();
+            Console.WriteLine("Enter password:");
+            sPassword = Console.ReadLine(); // ReadLine() is not safe as password is visible
+
+            httpClient.BaseAddress = new Uri(sLocationOrigin + sWebApiBasePathname);
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage oHttpResponseMsgX = await httpClient.PostAsJsonAsync("auth", new { username = sUsername, password = sPassword });
+            string sResponse = oHttpResponseMsgX.Content.ReadAsStringAsync().Result;
+            sUsername = sPassword = "";
+            if (!oHttpResponseMsgX.IsSuccessStatusCode)
+            {
+                Console.WriteLine("Failure");
+                return;
+            }
+            httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + sResponse);</pre></div>
+   </div>
+   
+</body>
+</html>
