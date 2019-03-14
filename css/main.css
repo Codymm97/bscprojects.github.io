@@ -1,12 +1,13 @@
-html {
-	background: #76b852; /* fallback for old browsers */
-    background: -webkit-linear-gradient(right, #708090, #5CADF6);
-    background: -moz-linear-gradient(right, #708090, #5CADF6);
-    background: -o-linear-gradient(right, #708090, #5CADF6);
-    background: linear-gradient(to left, #708090, #5CADF6);
-    font-family: "Roboto", sans-serif;
+body {
+	background: #00bfff;
+    background: -webkit-linear-gradient(right, #66b3ff, #00ace6);
+    background: -moz-linear-gradient(right, #66b3ff, #00ace6);
+    background: -o-linear-gradient(right, #66b3ff, #00ace6);
+    background: linear-gradient(to left, #66b3ff, #00ace6);
+	font-family: "Trebuchet MS";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /*background: linear-gradient(to bottom, #3399ff 34%, #3366ff 100%);*/
 }
 .center {
 	display:flex;
@@ -15,7 +16,6 @@ html {
 	margin-right: auto;
 	margin-left: auto;
 	margin-top: 1.5%;
-	font-family: Verdana;
 	color: white;
 }
 
@@ -34,4 +34,48 @@ html {
   margin: 0% 1%;
   padding: 20px;
   /*font-size: 30px;*/
+}
+
+
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 0;
+  padding-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  /*background-color: DodgerBlue;*/
+}
+
+.flex-container > div {
+  background-color: #e6e6e6;
+  white-space: nowrap;
+  overflow: hidden;
+  /*padding: 1%;*/
+  color: black;
+  width: 60%;
+  min-width: 150px;
+  margin: 10px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 200%;
+  /*font-family: "Verdana";*/
+  box-shadow: rgba(0,0,0,.6) 8px 8px 8px;
+}
+
+.flex-container > div:hover {
+    /*transform: perspective(1px) translateZ(0);*/
+    /*width: 26%;*/
+    cursor: pointer;
+    z-index: 1%;
+    transform: scale(1.08);
+    color: white;
+    box-shadow: rgba(0,0,0,.6) 10px 10px 10px;
+    background: #9bd665;
+    background: -webkit-gradient(linear, left top, left bottom, from(#26b30d), to(#9bd665));
+    background: -webkit-linear-gradient(top, #26b30d, #9bd665);
+    background: -moz-linear-gradient(top, #26b30d, #9bd665);
+    background: -ms-linear-gradient(top, #26b30d, #9bd665);
+    background: -o-linear-gradient(top, #26b30d, #9bd665);
 }

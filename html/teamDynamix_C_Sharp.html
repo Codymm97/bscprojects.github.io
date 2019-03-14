@@ -2,12 +2,31 @@
 <html>
 <head>
 	<title>Team Dynamix C# Documentation</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
 </head>
 <body>
+	<nav class="navbar navbar-inverse"> <!-- https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_navbar_right&stacked=h -->
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="#">BSC Projects</a>
+	    </div>
+	    <ul class="nav navbar-nav">
+	      <li><a href="../index.html">Home</a></li>
+	      <li class="active"><a href="teamDynamix_C_Sharp.html">C#</a></li>
+	      <li><a href="#">Node.js</a></li>
+	    </ul>
+	  </div>
+	</nav>
    <h1 class="center">C# TeamDynamix Documentation</h1>
-   <div class="code-flex-box center">
+   <div class="center flex-container">
+   	<div>Getting Started</div>
+   	<div>Logging in</div>
+   </div>
+   <!-- <div class="code-flex-box center">
    	<div>
    		<p>Getting Started. HttpClient object is used to store login information as well as handle requests to TeamDynamix.</p>
    	</div>
@@ -29,7 +48,7 @@
                 return;
             }
             httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + sResponse);</pre></div>
-   </div>
+   </div> -->
    
 </body>
 </html>
