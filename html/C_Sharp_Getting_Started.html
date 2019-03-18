@@ -4,9 +4,13 @@
 	<title>Team Dynamix C# Documentation</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
+	<script type="text/javascript" src="../js/main.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-inverse"> <!-- https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_navbar_right&stacked=h -->
@@ -28,11 +32,35 @@
 		<a href="teamDynamix_login.html" class="next round">
 			<div class="arrow_big">&#8250;</div></a>
 	</div>
+	<!-- <a href="#step_6">step 6</a> -->
+	<div class="center flex-container-2">
+	   	<div style="width: 60%;" onclick="showSteps()">Show steps</div>
+	   	<div class="hidden_1" onclick="location.href='#step_1'">Step 1</div>
+	   	<div class="hidden_1" onclick="location.href='#step_2'">Step 2</div>
+	   	<div class="hidden_1" onclick="location.href='#step_3'">Step 3</div>
+	   	<div class="hidden_1" onclick="location.href='#step_4'">Step 4</div>
+	   	<div class="hidden_1" onclick="location.href='#step_5'">Step 5</div>
+	   	<div class="hidden_1" onclick="location.href='#step_6'">Step 6</div>
+	   	<div class="hidden_1" onclick="location.href='#step_7'">Step 7</div>
+	   	<div class="hidden_1" onclick="location.href='#step_8'">Step 8</div>
+   </div>
 	<div class="step-container">
-		<div><div class="step-span">Within the TeamDynamix waffle, select the downloads icon.</div></div>
+		<div id="step_1"><div class="step-span">1) Within the TeamDynamix waffle, select the downloads icon.</div></div>
 		<img onclick="window.open('../photos/downloads.png', '_blank')" src="../photos/downloads.png" alt="TeamDynamix Downloads">
-		<div><div class="step-span">On the downloads tab, select the newest version of the TeamDynamix .DLL file. This file will allow us to use TeamDynamix datatypes within Visual Studio.</div></div>
+		<div id="step_2"><div class="step-span">2) On the downloads tab, select the newest version of the TeamDynamix API .DLL file. This file will allow us to use TeamDynamix data types within Visual Studio. Click the "download" button.</div></div>
 		<img onclick="window.open('../photos/teamDynamix_dll.png', '_blank')" src="../photos/teamDynamix_dll.png" alt="TeamDynamix DLL link">
+		<div id="step_3"><div class="step-span">3) Open Visual Studio. If you do not have Visual Studio downloaded to your computer, do that now. Then navigate to File->New->Project. Within the "Visual C#" tab, select the "Console App (.NET Core)" project type. You can use other project types if desired, but a Console App will fulfill most of your needs and is simple enough to use.</div></div>
+		<img onclick="window.open('../photos/consoleapp.png', '_blank')" src="../photos/consoleapp.png" alt="Visual Studio Console App">
+		<div id="step_4"><div class="step-span">4) Now, in a seperate File Explorer window, navigate to your Visual Studio project folder. This file path goes as follows: your name->source->repos->project name->project name. Yes, you navigate into two separate, consecutive folders with your project name. Then move the TeamDynamix.Api.dll file you downloaded into this folder.</div></div>
+		<img onclick="window.open('../photos/dll_in_repo.png', '_blank')" src="../photos/dll_in_repo.png" alt="Add TeamDynamix dll to source repo">
+		<div id="step_5"><div class="step-span">5) Back in Visual Studio, select Project->Add Reference. We will be adding the .dll file as a project reference.</div></div>
+		<img onclick="window.open('../photos/add_reference.png', '_blank')" src="../photos/add_reference.png" alt="Visual Studio: Project->Add Reference">
+		<div id="step_6"><div class="step-span">6) Within the Reference Manager, click "Browse". Navigate to the folder where you just moved the .dll file to. Select the "TeamDynamix.Api.dll" file and click "Add".</div></div>
+		<img onclick="window.open('../photos/browse.png', '_blank')" src="../photos/browse.png" alt="Browse: search for project reference">		
+		<div id="step_7"><div class="step-span">7) Hit the file's check mark in the Reference Manager, and click "OK".</div></div>
+		<img onclick="window.open('../photos/add_dll.png', '_blank')" src="../photos/add_dll.png" alt="Add TeamDynamix DLL as a project reference">
+		<div id="step_8"><div class="step-span">8) Add the following line of code to the top of your Program.cs file: "using TeamDynamix.Api.Tickets;" The red squiggle should not appear under it. If the red squiggle does appear, repeat steps 1-6 over again. Test out the file you have included by instantiating a ticket object as seen in the photo.</div></div>
+		<img onclick="window.open('../photos/using_statement.png', '_blank')" src="../photos/using_statement.png" alt="Add 'TeamDynamix.Api.Tickets' with the 'using' statement.">
 	</div>
 </body>
 </html>
