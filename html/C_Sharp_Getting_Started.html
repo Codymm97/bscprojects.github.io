@@ -9,10 +9,14 @@
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
 	<script type="text/javascript" src="../js/main.js"></script>
 </head>
-<body>
+<body>	
 	<nav class="navbar navbar-inverse"> <!-- https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_navbar_right&stacked=h -->
 	  <div class="container-fluid">
 	    <div class="navbar-header">
@@ -25,25 +29,27 @@
 	    </ul>
 	  </div>
 	</nav>
-	<div class="arrow_box">
-		<a href="teamDynamix_C_Sharp.html" class="previous round">
-			<div class="arrow_big">&#8249;</div></a>
+
+	<ul class="pager">
+		<li><a href="teamDynamix_C_Sharp.html" class="prevRef">Previous</a></li>
 			<span class="title">TeamDynamix C# Getting Started</span>
-		<a href="teamDynamix_login.html" class="next round">
-			<div class="arrow_big">&#8250;</div></a>
+		<li><a href="teamDynamix_login.html" class="nextRef">Next</a></li>
+	</ul>
+
+	<div class="center dropdown">
+	  <button class="dropbtn">Steps</button>
+	  <div class="dropdown-content">
+	    <a href="#step_1">1</a>
+	    <a href="#step_2">2</a>
+	    <a href="#step_3">3</a>
+	    <a href="#step_4">4</a>
+	    <a href="#step_5">5</a>
+	    <a href="#step_6">6</a>
+	    <a href="#step_7">7</a>
+	    <a href="#step_8">8</a>
+	  </div>
 	</div>
-	<!-- <a href="#step_6">step 6</a> -->
-	<div class="center flex-container-2">
-	   	<div style="width: 60%;" onclick="showSteps()">Show steps</div>
-	   	<div class="hidden_1" onclick="location.href='#step_1'">Step 1</div>
-	   	<div class="hidden_1" onclick="location.href='#step_2'">Step 2</div>
-	   	<div class="hidden_1" onclick="location.href='#step_3'">Step 3</div>
-	   	<div class="hidden_1" onclick="location.href='#step_4'">Step 4</div>
-	   	<div class="hidden_1" onclick="location.href='#step_5'">Step 5</div>
-	   	<div class="hidden_1" onclick="location.href='#step_6'">Step 6</div>
-	   	<div class="hidden_1" onclick="location.href='#step_7'">Step 7</div>
-	   	<div class="hidden_1" onclick="location.href='#step_8'">Step 8</div>
-   </div>
+
 	<div class="step-container">
 		<div id="step_1"><div class="step-span">1) Within the TeamDynamix waffle, select the downloads icon.</div></div>
 		<img onclick="window.open('../photos/downloads.png', '_blank')" src="../photos/downloads.png" alt="TeamDynamix Downloads">
@@ -62,5 +68,10 @@
 		<div id="step_8"><div class="step-span">8) Add the following line of code to the top of your Program.cs file: "using TeamDynamix.Api.Tickets;" The red squiggle should not appear under it. If the red squiggle does appear, repeat steps 1-6 over again. Test out the file you have included by instantiating a ticket object as seen in the photo.</div></div>
 		<img onclick="window.open('../photos/using_statement.png', '_blank')" src="../photos/using_statement.png" alt="Add 'TeamDynamix.Api.Tickets' with the 'using' statement.">
 	</div>
+
+	<ul class="pager">
+		<li><a style="margin-bottom: 1%;" href="teamDynamix_C_Sharp.html" class="prevRef">Previous</a></li>
+		<li><a style="margin-bottom: 1%;" href="teamDynamix_login.html" class="nextRef">Next</a></li>
+	</ul>
 </body>
 </html>
