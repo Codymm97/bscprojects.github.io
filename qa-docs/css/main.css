@@ -3,8 +3,17 @@ main {
     left: 200px;
     padding-left: 20px;
     font-family: var(--body-font);
+    width: calc(100% - 240px);
 }
 
 main h1.content-heading {
     font-family: var(--heading-font);
+}
+
+main h2 {
+    color: #666;
+}
+
+main hr {
+    width: 100%;
 }

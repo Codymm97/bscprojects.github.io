@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body>
     <header>
         <img src="images/Icon.svg" alt="Icon">
@@ -23,6 +25,7 @@
         <a class="nav-link" href="#technologies">Technologies</a>
         <a class="nav-link" href="#setup">Setup</a>
         <a class="nav-link" href="#login">Login</a>
+        <a class="nav-link" href="#loading-screen">Loading Screen</a>
         <h3 class="nav-heading">Evaluations</h3>
         <a class="nav-link" href="#primary">Primary</a>
         <a class="nav-link" href="#secondary">Secondary</a>
@@ -40,13 +43,43 @@
     </nav>
     <main>
         <h1 class="content-heading">Introduction</h1>
+        <hr>
         <h2 class="content-section" id="technologies">Technologies</h2>
+        <p>The QA Site's (the site) client interface is built using almost pure HTML, CSS, and JavaScript. In early
+            builds, <a href="https://jquery.com/" target="_blank">jQuery</a> was used
+            and with each update it is fitered out in preference for vanilla web tools, unless it is easier to use
+            <a href="https://jquery.com/" target="_blank">jQuery</a>, which is hte case for tha calculator.</p>
+        <p>The server side of the site is written in <a href="https://nodejs.org/en/" target="_blank">Node.js</a>. All
+            the code is stored on <a href="https://github.com/" target="_blank">Github</a> and then deployed on <a
+                href="https://heroku.com" target="_blank">Heroku</a>.</p>
         <h2 class="content-section" id="setup">Setup</h2>
+        <p>In order to work on this project, You will need to install a few things:</p>
+        <ul>
+            <li>A Text Editor of your choice</li>
+            <li><a href="https://git-scm.com/" target="_blank">Git</a></li>
+            <li><a href="https://nodejs.org/en/" target="_blank">Node.js</a></li>
+        </ul>
+        <p>Once you have those things, you will need to add yourself as a collaborator to the project on Github and then
+            you can clone it onto your local machine. From there you can do whatever you need to do the site.</p>
         <h2 class="content-section" id="login">Login</h2>
+        <p>Now that we are all set up and ready to go, lets walk through the site and dive deep into what everything
+            does. For starters, when you log onto the root page, it will diret you to the Login page. You will also be
+            redirected here if there are any problems throughout the site. But, this page is pretty simple, just put in
+            the same credentials you use to log into TeamDynamix.</p>
+        <p>Once you hit the submit button, the login prompt disappears and the loading screen appears. It is an AJAX
+            request that sends the credentials to the server, and then uses the TDAPI node module to verify that you are
+            logged in correctly. After it returns success, it lets you into the site and lands you on the Primary
+            Evaluations page.</p>
+            <p>If your credentials do not evaluate to true, it sends back an error and notifies the user that the credentials were wrong. It then asks them to log in again.</p>
+        <h2 class="content-section" id="loading-screen">Loading Screen</h2>
         <h1 class="content-heading">Evaluations</h1>
+        <hr>
         <h1 class="content-heading">Sources</h1>
+        <hr>
         <h1 class="content-heading">Scope</h1>
+        <hr>
     </main>
     <script src="js/nav.js"></script>
 </body>
+
 </html>
