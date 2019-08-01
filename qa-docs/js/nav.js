@@ -1,7 +1,5 @@
 // Scroll to show where your active link is
 window.onscroll = (e) => {
-    console.log("Scrolling");
-
     const elements = document.getElementsByClassName("content-section");
     for (let i = 0; i < elements.length; i++) {
         if (document.documentElement.scrollTop >= elements[i].offsetTop) //Adjust Tolerance as you want
@@ -22,7 +20,6 @@ window.onscroll = (e) => {
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-
         document.querySelector(this.getAttribute('href')).scrollIntoView({
             behavior: 'smooth'
         });
