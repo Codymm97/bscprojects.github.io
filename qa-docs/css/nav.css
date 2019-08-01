@@ -13,7 +13,7 @@ nav {
     z-index: -1;
 }
 
-nav h2.nav-heading {
+nav h3.nav-heading {
     color: black;
     margin-bottom: 5px;
     padding-left: 10px;
