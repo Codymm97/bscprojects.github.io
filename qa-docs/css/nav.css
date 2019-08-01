@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Baloo+Chettan&display=swap');
+
+nav {
+    position: absolute;
+    width: 200px;
+    height: calc(100% - 55px);
+    font-family: 'Baloo Chettan', cursive;
+    display: flex;
+    flex-direction: column;
+    border-right: 2px solid #111;
+}
+
+nav h2.nav-heading {
+    color: black;
+    margin-bottom: 5px;
+    padding-left: 10px;
+}
+nav a {
+    padding-left: 20px;
+    color: #999;
+    text-decoration: none;
+}
+nav a:hover {
+    background-color: #ccc;
+}
+nav a:active {
+    border-right: hotpink;
+}

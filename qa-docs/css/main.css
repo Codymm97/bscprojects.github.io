@@ -1,0 +1,9 @@
+main {
+    position: absolute;
+    left: 200px;
+    padding-left: 20px;
+}
+
+h1.content-heading {
+    font-family: 'Lobster', cursive;
+}
