@@ -2,9 +2,9 @@ main {
     position: absolute;
     left: 200px;
     padding-left: 20px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+    font-family: var(--body-font);
 }
 
 main h1.content-heading {
-    font-family: 'Lobster', cursive;
+    font-family: var(--heading-font);
 }
