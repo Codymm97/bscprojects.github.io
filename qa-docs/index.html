@@ -89,23 +89,24 @@
             after everything is done, it has a report that has all the employees in the BSC, all the New Hires, all the
             final evaluation scores for each employee and also their preliminary scores.</p>
         <p>From there, it builds a somewhat complicated array of objects that is referred to as the Agent List. It has
-            an Agent class that has some memeber vairables, and member functions. They are explained below:</p>
-        <h3 class="code-heading">CLASS: Agent</h3>
+            an Agent class that has some member variables, and member functions. Each Agent class also contains a Score
+            class. They are explained below:</p>
+        <h3 class="code-heading">Agent: CLASS</h3>
         <section class="code-section">
             <div class="code-card lg">
-                <code>constructor(name?: string, iNumber?: number, team?: string, finalScoreList?: array, prelimScoreList?: array)  <br>
-                { <br>
-                    red: number <br>
-                    orange: number <br>
-                    yellow: number <br>
-                    green: number <br>
-                    blue: number <br>
-                }</code>
+                <code class="flex-column">
+                    <span>constructor(name?: string, iNumber?: number, team?: string, finalScoreList?: array, prelimScoreList?: array)</span>
+                    <span>{</span>
+                    <span class="tab">red: number</span>
+                    <span class="tab">orange: number</span>
+                    <span class="tab">yellow: numberr</span>
+                    <span class="tab">green: number</span>
+                    <span class="tab">blue: number</span>
+                    <span>}</span>
+                </code>
             </div>
             <div class="code-card sm">
-                <code>
-                    getAverage(source: string)
-                </code>
+                <code>getAverage(source: string)</code>
             </div>
             <div class="code-card sm">
                 <code>getLastQA(source: string)</code>
@@ -123,6 +124,38 @@
                 <code>isQAdLast24Hours(source: string)</code>
             </div>
         </section>
+        <h3 class="code-heading">Score: CLASS</h3>
+        <section class="code-section">
+            <div class="code-card lg">
+                <code>constructor(percentage?: number, date?: Date, source?: string)</code>
+            </div>
+            <div class="code-card sm">
+                <code>getFormattedDate()</code>
+            </div>
+        </section>
+        <p><b>Second,</b> after the agentList is built, it gets sent a few different function that combine the reports
+            and the object. Basically all you need to know is that one function adds all the preliminary scores to the
+            agent. The next function adds all the final scores. And lastly all the New Hires, Leads, DR, and Solutions
+            employees get removed. The result is the finished array that will be used to do the calculations.</p>
+        <h3 class="code-heading">agentList: ARRAY</h3>
+        <section class="code-section">
+            <div class="code-card xl">
+                <code class="flex-column">
+                    <span>agentList [</span>
+                    <span class="tab">Agent {</span>
+                    <span class="tab two">finalScoreList [</span>
+                    <span class="tab three">Score { ... }</span>
+                    <span class="tab two">[</span>
+                    <span class="tab">}</span>
+                    <span>]</span>
+                </code>
+            </div>
+        </section>
+        <p><b>Third,</b> the finished agentList is added as an event listener to four buttons, one for each source. When
+            a button is clicked, (the evaluator wants to see the list for that source) it clears the screen of the
+            previous list and loads the new list.</p>
+        <p>A function is called: buildPrimaryColumn(agentList: array, source: string) that looks through the agentList
+            and sorts it based on when they were last evaluated and what their status is.</p>
         <h2 class="content-section" id="secondary">Secondary</h2>
         <h2 class="content-section" id="arbitration">Arbitration</h2>
         <h2 class="content-section" id="quick">Quick</h2>

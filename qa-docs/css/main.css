@@ -11,11 +11,12 @@ main h1.content-heading {
 }
 
 main h2 {
-    color: #666;
+    color: var(--dark-grey);
 }
 
 main hr {
     width: 100%;
+    border-color: var(--accent);
 }
 
 /* Code Section */
@@ -39,6 +40,11 @@ main .code-card {
     border: 2px solid var(--accent);
 }
 
+main .code-card.xl {
+    height: 400px;
+    width: 100%;
+}
+
 main .code-card.lg {
     height: 300px;
     width: 300px;
@@ -47,4 +53,23 @@ main .code-card.lg {
 main .code-card.sm {
     height: 180px;
     width: 180px;
+}
+
+main .flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+main code span {
+    margin: 2.5px 0;
+}
+
+main .tab {
+    margin-left: 1.15em;
+}
+main .tab.two {
+    margin-left: 2.15em;
+}
+main .tab.three {
+    margin-left: 3.15em;
 }

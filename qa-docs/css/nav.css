@@ -17,11 +17,11 @@ nav h3.nav-heading {
 }
 nav a {
     padding-left: 20px;
-    color: #777;
+    color: var(--dark-grey);
     text-decoration: none;
 }
 nav a:hover {
-    background-color: #ccc;
+    background-color: #eee;
 }
 
 nav a.active {
