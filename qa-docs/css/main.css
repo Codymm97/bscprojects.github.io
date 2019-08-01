@@ -3,7 +3,7 @@ main {
     left: 200px;
     padding-left: 20px;
     font-family: var(--body-font);
-    width: calc(100% - 240px);
+    width: calc(100% - 220px);
 }
 
 main h1.content-heading {
@@ -16,4 +16,35 @@ main h2 {
 
 main hr {
     width: 100%;
+}
+
+/* Code Section */
+main h3.code-heading {
+    width: 100%;
+    background-color: var(--accent);
+    border: 2px solid black;
+    padding: 5px;
+}
+
+main .code-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+main .code-card {
+    background-color: #222;
+    color: #ddd;
+    padding: 5px;
+    border: 2px solid var(--accent);
+}
+
+main .code-card.lg {
+    height: 300px;
+    width: 300px;
+    margin-bottom: 20px;
+}
+main .code-card.sm {
+    height: 180px;
+    width: 180px;
 }

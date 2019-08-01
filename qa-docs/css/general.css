@@ -2,7 +2,12 @@ html, body {
     margin: 0;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 :root {
     --heading-font: "Palatino Linotype", "Book Antiqua", Palatino, serif;
     --body-font: "Trebuchet MS", Helvetica, sans-serif;
+    --accent: hotpink;
 }

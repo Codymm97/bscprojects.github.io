@@ -25,7 +25,7 @@
         <a class="nav-link" href="#technologies">Technologies</a>
         <a class="nav-link" href="#setup">Setup</a>
         <a class="nav-link" href="#login">Login</a>
-        <a class="nav-link" href="#loading-screen">Loading Screen</a>
+        <a class="nav-link" href="#loading">Loading</a>
         <h3 class="nav-heading">Evaluations</h3>
         <a class="nav-link" href="#primary">Primary</a>
         <a class="nav-link" href="#secondary">Secondary</a>
@@ -48,7 +48,7 @@
         <p>The QA Site's (the site) client interface is built using almost pure HTML, CSS, and JavaScript. In early
             builds, <a href="https://jquery.com/" target="_blank">jQuery</a> was used
             and with each update it is fitered out in preference for vanilla web tools, unless it is easier to use
-            <a href="https://jquery.com/" target="_blank">jQuery</a>, which is hte case for tha calculator.</p>
+            jQuery, which is the case for the calculator.</p>
         <p>The server side of the site is written in <a href="https://nodejs.org/en/" target="_blank">Node.js</a>. All
             the code is stored on <a href="https://github.com/" target="_blank">Github</a> and then deployed on <a
                 href="https://heroku.com" target="_blank">Heroku</a>.</p>
@@ -70,10 +70,63 @@
             request that sends the credentials to the server, and then uses the TDAPI node module to verify that you are
             logged in correctly. After it returns success, it lets you into the site and lands you on the Primary
             Evaluations page.</p>
-            <p>If your credentials do not evaluate to true, it sends back an error and notifies the user that the credentials were wrong. It then asks them to log in again.</p>
-        <h2 class="content-section" id="loading-screen">Loading Screen</h2>
+        <p>If your credentials do not evaluate to true, it sends back an error and notifies the user that the
+            credentials were wrong. It then asks them to log in again.</p>
+        <h2 class="content-section" id="loading">Loading</h2>
+        <p>This loading screen (but really more of a loading bar-like image) is made out of pure css. The code is stored
+            in the general css file that each page loads. There is also a few HTML elements that it uses and they reside
+            outside of the main tag. Once the loading screen is called, everything in the main tag disappears and the
+            loading
+            screen shows. After the JavaScript has done what it needs to, the loading screen goes away and everything
+            the main element appears again.</p>
         <h1 class="content-heading">Evaluations</h1>
         <hr>
+        <h2 class="content-section" id="primary">Primary</h2>
+        <p>This page is probably the most important page on the entire site. This page tells the evaluator who they need
+            to evaluate next. There is also a lot of complicated calculations going on on this page. I will break it
+            down into steps to help with the snackability.</p>
+        <p><b>First,</b> it makes 4 requests to get 4 different reports. Their IDs are 14236, 4807, 13996, 13990 and
+            after everything is done, it has a report that has all the employees in the BSC, all the New Hires, all the
+            final evaluation scores for each employee and also their preliminary scores.</p>
+        <p>From there, it builds a somewhat complicated array of objects that is referred to as the Agent List. It has
+            an Agent class that has some memeber vairables, and member functions. They are explained below:</p>
+        <h3 class="code-heading">CLASS: Agent</h3>
+        <section class="code-section">
+            <div class="code-card lg">
+                <code>constructor(name?: string, iNumber?: number, team?: string, finalScoreList?: array, prelimScoreList?: array)  <br>
+                { <br>
+                    red: number <br>
+                    orange: number <br>
+                    yellow: number <br>
+                    green: number <br>
+                    blue: number <br>
+                }</code>
+            </div>
+            <div class="code-card sm">
+                <code>
+                    getAverage(source: string)
+                </code>
+            </div>
+            <div class="code-card sm">
+                <code>getLastQA(source: string)</code>
+            </div>
+            <div class="code-card sm">
+                <code>getStatus(source: string)</code>
+            </div>
+            <div class="code-card sm">
+                <code>getNextQADate(source: string)</code>
+            </div>
+            <div class="code-card sm">
+                <code>isQAdNumDays(source: string, numOfDays: number)</code>
+            </div>
+            <div class="code-card sm">
+                <code>isQAdLast24Hours(source: string)</code>
+            </div>
+        </section>
+        <h2 class="content-section" id="secondary">Secondary</h2>
+        <h2 class="content-section" id="arbitration">Arbitration</h2>
+        <h2 class="content-section" id="quick">Quick</h2>
+        <h2 class="content-section" id="calculator">Calculator</h2>
         <h1 class="content-heading">Sources</h1>
         <hr>
         <h1 class="content-heading">Scope</h1>
