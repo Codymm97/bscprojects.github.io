@@ -131,10 +131,10 @@
         <hr>
         <h2 class="content-section" id="email">Email</h2>
         <h1 class="content-heading">Scope</h1>
+        <hr>
         <h2 class="content-section" id="violations">Violations</h2>
         <h2 class="content-section" id="statistics">Statistics</h2>
         <h2 class="content-section" id="reports">Reports</h2>
-        <hr>
         <h1 class="content-heading">Data Types</h1>
         <hr>
         <h2 class="content-section" id="agent">Agent</h2>
@@ -317,7 +317,7 @@
         </table>
         <p class="tab"><i>Returns: Moment</i></p>
         <h3>isQAdNumDays()</h3>
-        <p></p>
+        <p>Determines whether the agent has been evaluated in the last X number of days.</p>
         <table>
             <thead>
                 <tr>
@@ -335,7 +335,26 @@
                 <tr>
                     <td><code>numOfDays</code></td>
                     <td>Number</td>
-                    <td></td>
+                    <td>How many days to check against the agent's last evaluation.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="tab"><i>Returns: Boolean</i></p>
+        <h3>isQAdLast24Hours()</h3>
+        <p>Determines whether the agent has been evaluated in the last 24 hours.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>source</code></td>
+                    <td>String</td>
+                    <td>How the agent contacted the customer. (e.g. Phone, Live Chat).</td>
                 </tr>
             </tbody>
         </table>
@@ -368,6 +387,9 @@
                 </tr>
             </tbody>
         </table>
+        <h3>getFormattedDate()</h3>
+        <p>Gets the date of the evaluation in the specified format.</p>
+        <p class="tab"><i>Returns: String</i></p>
     </main>
     <script src="js/nav.js"></script>
 </body>
