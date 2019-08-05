@@ -41,18 +41,21 @@
         <h3 class="nav-heading">Data Types</h3>
         <a class="nav-link" href="#agent">Agent</a>
         <a class="nav-link" href="#score">Score</a>
-        <h3 class="nav-heading">TeamDynamix</h3>
-        <a class="nav-link" href="https://api.teamdynamix.com/TDWebApi/" target="_blank">API Documentation</a>
+        <h3 class="nav-heading">External Resources</h3>
+        <a class="nav-link" href="https://api.teamdynamix.com/TDWebApi/" target="_blank">TeamDynamix Web API</a>
+        <a class="nav-link" href="https://momentjs.com/" target="_blank">Moment.js</a>
+        <a class="nav-link" href="https://jquery.com/" target="_blank">jQuery</a>
+        <a class="nav-link" href="https://nodejs.org/en/" target="_blank">Node.js</a>
     </nav>
     <main>
         <h1 class="content-heading">Introduction</h1>
         <hr>
         <h2 class="content-section" id="technologies">Technologies</h2>
         <p>The QA Site's (the site) client interface is built using almost pure HTML, CSS, and JavaScript. In early
-            builds, <a href="https://jquery.com/" target="_blank">jQuery</a> was used
+            builds, jQuery was used
             and with each update it is fitered out in preference for vanilla web tools, unless it is easier to use
             jQuery, which is the case for the calculator.</p>
-        <p>The server side of the site is written in <a href="https://nodejs.org/en/" target="_blank">Node.js</a>. All
+        <p>The server side of the site is written in Node.js</a>. All
             the code is stored on <a href="https://github.com/" target="_blank">Github</a> and then deployed on <a
                 href="https://heroku.com" target="_blank">Heroku</a>.</p>
         <h2 class="content-section" id="setup">Setup</h2>
@@ -105,7 +108,7 @@
         <section class="code-section">
             <div class="code-card">
                 <code class="flex-column">
-                    <span>agentList [</span>
+                    <span>[</span>
                     <span class="tab">Agent {</span>
                     <span class="tab two">finalScoreList [</span>
                     <span class="tab three">Score { ... }</span>
@@ -126,7 +129,11 @@
         <h2 class="content-section" id="calculator">Calculator</h2>
         <h1 class="content-heading">Sources</h1>
         <hr>
+        <h2 class="content-section" id="email">Email</h2>
         <h1 class="content-heading">Scope</h1>
+        <h2 class="content-section" id="violations">Violations</h2>
+        <h2 class="content-section" id="statistics">Statistics</h2>
+        <h2 class="content-section" id="reports">Reports</h2>
         <hr>
         <h1 class="content-heading">Data Types</h1>
         <hr>
@@ -230,48 +237,13 @@
             </tbody>
         </table>
         <h3>getAverage()</h3>
+        <p>Calculates and returns the average of all the agent's final QA scores. If they do not have any
+            QA scores, it returns null.</p>
         <table>
             <thead>
                 <tr>
                     <th>Parameters</th>
-                    <th>Return</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><code>source</code></td>
-                    <td>Number | null</td>
-                    <td>Calculates and returns the average of all the agent's final QA scores. If they do not have any
-                        QA scores, it returns null.</td>
-                </tr>
-            </tbody>
-        </table>
-        <h3>getLastQA()</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Parameters</th>
-                    <th>Return</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><code>source</code></td>
-                    <td>Score</td>
-                    <td>Searches for the last evaluation the agent recieved. First it searches the Preliminary list, and
-                        if there are none there, it searches the Final list. If the agent does not have any QA scores,
-                        it returns a default Score.</td>
-                </tr>
-            </tbody>
-        </table>
-        <h3>getStatus()</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Parameters</th>
-                    <th>Return</th>
+                    <th>Type</th>
                     <th>Description</th>
                 </tr>
             </thead>
@@ -279,28 +251,95 @@
                 <tr>
                     <td><code>source</code></td>
                     <td>String</td>
-                    <td>Gets the average for the agent and calculates what status they are in.</td>
+                    <td>How the agent contacted the customer. (e.g. Phone, Live Chat).</td>
                 </tr>
             </tbody>
         </table>
-        <h3>getNextQADate()</h3>
+        <p class="tab"><i>Returns: Number | null</i></p>
+        <h3>getLastQA()</h3>
+        <p>Searches for the last evaluation the agent recieved. First it searches the Preliminary list, and
+            if there are none there, it searches the Final list. If the agent does not have any QA scores,
+            it returns a default Score.</p>
         <table>
             <thead>
                 <tr>
                     <th>Parameters</th>
-                    <th>Return</th>
+                    <th>Type</th>
                     <th>Description</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td><code>source</code></td>
-                    <td>Moment</td>
-                    <td>Calculates when the agent's next evaluation should take place. This is based on the agent's last
-                        evaluation score, their status, and the current frequency.</td>
+                    <td>String</td>
+                    <td>How the agent contacted the customer. (e.g. Phone, Live Chat).</td>
                 </tr>
             </tbody>
         </table>
+        <p class="tab"><i>Returns: Score</i></p>
+        <h3>getStatus()</h3>
+        <p>Gets the average for the agent and calculates what status they are in.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>source</code></td>
+                    <td>String</td>
+                    <td>How the agent contacted the customer. (e.g. Phone, Live Chat).</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="tab"><i>Returns: String</i></p>
+        <h3>getNextQADate()</h3>
+        <p>Calculates when the agent's next evaluation should take place. This is based on the agent's last
+            evaluation score, their status, and the current frequency.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>source</code></td>
+                    <td>String</td>
+                    <td>How the agent contacted the customer. (e.g. Phone, Live Chat).</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="tab"><i>Returns: Moment</i></p>
+        <h3>isQAdNumDays()</h3>
+        <p></p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>source</code></td>
+                    <td>String</td>
+                    <td>How the agent contacted the customer. (e.g. Phone, Live Chat).</td>
+                </tr>
+                <tr>
+                    <td><code>numOfDays</code></td>
+                    <td>Number</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="tab"><i>Returns: Boolean</i></p>
         <h2 class="content-section" id="score">Score</h2>
         <h3>Constructor</h3>
         <table>
@@ -329,29 +368,6 @@
                 </tr>
             </tbody>
         </table>
-        <!-- <section class="code-section">
-            <div class="code-card sm">
-                <code>getStatus(source: string)</code>
-            </div>
-            <div class="code-card sm">
-                <code>getNextQADate(source: string)</code>
-            </div>
-            <div class="code-card sm">
-                <code>isQAdNumDays(source: string, numOfDays: number)</code>
-            </div>
-            <div class="code-card sm">
-                <code>isQAdLast24Hours(source: string)</code>
-            </div>
-        </section>
-        <h3 class="code-heading">Score: CLASS</h3>
-        <section class="code-section">
-            <div class="code-card lg">
-                <code>constructor(percentage?: number, date?: Date, source?: string)</code>
-            </div>
-            <div class="code-card sm">
-                <code>getFormattedDate()</code>
-            </div>
-        </section> -->
     </main>
     <script src="js/nav.js"></script>
 </body>

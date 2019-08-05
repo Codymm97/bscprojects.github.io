@@ -83,7 +83,6 @@ main .code-card {
     color: var(--background);
     padding: 5px;
     border: 2px solid var(--orange);
-    height: 400px;
     width: 100%;
 }
 
