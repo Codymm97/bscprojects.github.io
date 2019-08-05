@@ -9,6 +9,10 @@ html, body {
 :root {
     --heading-font: "Palatino Linotype", "Book Antiqua", Palatino, serif;
     --body-font: "Trebuchet MS", Helvetica, sans-serif;
-    --accent: hotpink;
-    --dark-grey: #555;
+    --accent: #95c623;
+    --link-visited: #0e4749;
+    --secondary: #002626;
+    --background: #fff;
+    --sub-accent: #efe7da;
+    --orange: #e55812;
 }

@@ -38,6 +38,9 @@
         <a class="nav-link" href="#violations">Violations</a>
         <a class="nav-link" href="#statistics">Statistics</a>
         <a class="nav-link" href="#reports">Reports</a>
+        <h3 class="nav-heading">Data Types</h3>
+        <a class="nav-link" href="#agent">Agent</a>
+        <a class="nav-link" href="#score">Score</a>
         <h3 class="nav-heading">TeamDynamix</h3>
         <a class="nav-link" href="https://api.teamdynamix.com/TDWebApi/" target="_blank">API Documentation</a>
     </nav>
@@ -70,7 +73,8 @@
             request that sends the credentials to the server, and then uses the TDAPI node module to verify that you are
             logged in correctly. After it returns success, it lets you into the site and lands you on the Primary
             Evaluations page.</p>
-        <p>If your credentials do not evaluate to true, it sends back an error and notifies the user that the
+        <p class="tip">If your credentials do not evaluate to true, it sends back an error and notifies the user that
+            the
             credentials were wrong. It then asks them to log in again.</p>
         <h2 class="content-section" id="loading">Loading</h2>
         <p>This loading screen (but really more of a loading bar-like image) is made out of pure css. The code is stored
@@ -85,32 +89,247 @@
         <p>This page is probably the most important page on the entire site. This page tells the evaluator who they need
             to evaluate next. There is also a lot of complicated calculations going on on this page. I will break it
             down into steps to help with the snackability.</p>
-        <p><b>First,</b> it makes 4 requests to get 4 different reports. Their IDs are 14236, 4807, 13996, 13990 and
+        <p>First, it makes 4 requests to get 4 different reports. Their IDs are 14236, 4807, 13996, 13990 and
             after everything is done, it has a report that has all the employees in the BSC, all the New Hires, all the
             final evaluation scores for each employee and also their preliminary scores.</p>
         <p>From there, it builds a somewhat complicated array of objects that is referred to as the Agent List. It has
             an Agent class that has some member variables, and member functions. Each Agent class also contains a Score
-            class. They are explained below:</p>
-        <h3 class="code-heading">Agent: CLASS</h3>
+            class.</p>
+        <p class="tip">For more on the Agent class, click here: <a href="#agent">Agent</a></p>
+        <p class="tip">For more on the Score class, click here: <a href="#score">Score</a></p>
+        <p>Second, after the agentList is built, it gets sent a few different function that combine the reports
+            and the object. Basically all you need to know is that one function adds all the preliminary scores to the
+            agent. The next function adds all the final scores. And lastly all the New Hires, Leads, DR, and Solutions
+            employees get removed. The result is the finished array that will be used to do the calculations.</p>
+        <h3>agentList</h3>
         <section class="code-section">
-            <div class="code-card lg">
+            <div class="code-card">
                 <code class="flex-column">
-                    <span>constructor(name?: string, iNumber?: number, team?: string, finalScoreList?: array, prelimScoreList?: array)</span>
-                    <span>{</span>
-                    <span class="tab">red: number</span>
-                    <span class="tab">orange: number</span>
-                    <span class="tab">yellow: numberr</span>
-                    <span class="tab">green: number</span>
-                    <span class="tab">blue: number</span>
-                    <span>}</span>
+                    <span>agentList [</span>
+                    <span class="tab">Agent {</span>
+                    <span class="tab two">finalScoreList [</span>
+                    <span class="tab three">Score { ... }</span>
+                    <span class="tab two">[</span>
+                    <span class="tab">}</span>
+                    <span>]</span>
                 </code>
             </div>
-            <div class="code-card sm">
-                <code>getAverage(source: string)</code>
-            </div>
-            <div class="code-card sm">
-                <code>getLastQA(source: string)</code>
-            </div>
+        </section>
+        <p>Third, the finished agentList is added as an event listener to four buttons, one for each source. When
+            a button is clicked, (the evaluator wants to see the list for that source) it clears the screen of the
+            previous list and loads the new list.</p>
+        <p>A function is called: buildPrimaryColumn(agentList: array, source: string) that looks through the agentList
+            and sorts it based on when they were last evaluated and what their status is.</p>
+        <h2 class="content-section" id="secondary">Secondary</h2>
+        <h2 class="content-section" id="arbitration">Arbitration</h2>
+        <h2 class="content-section" id="quick">Quick</h2>
+        <h2 class="content-section" id="calculator">Calculator</h2>
+        <h1 class="content-heading">Sources</h1>
+        <hr>
+        <h1 class="content-heading">Scope</h1>
+        <hr>
+        <h1 class="content-heading">Data Types</h1>
+        <hr>
+        <h2 class="content-section" id="agent">Agent</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>name</code></td>
+                    <td>String</td>
+                    <td>The name of the agent.</td>
+                </tr>
+                <tr>
+                    <td><code>iNumber</code></td>
+                    <td>Number</td>
+                    <td>The I-Number of the agent.</td>
+                </tr>
+                <tr>
+                    <td><code>team</code></td>
+                    <td>String</td>
+                    <td>The team that the agent is a part of (e.g. Contacts, Outreach).</td>
+                </tr>
+                <tr>
+                    <td><code>finalScoreList</code></td>
+                    <td>Array&lt;Score&gt;</td>
+                    <td>A list of all the final QA scores of the agent.</td>
+                </tr>
+                <tr>
+                    <td><code>prelimScoreList</code></td>
+                    <td>Array&lt;Score&gt;</td>
+                    <td>A list of the preliminary QA scores of the agent.</td>
+                </tr>
+                <tr>
+                    <td><code>red</code></td>
+                    <td>Number</td>
+                    <td>The minimum number of days between evaluations. Also known as the frequency.</td>
+                </tr>
+                <tr>
+                    <td><code>orange</code></td>
+                    <td>Number</td>
+                    <td>The minimum number of days between evaluations. Also known as the frequency.</td>
+                </tr>
+                <tr>
+                    <td><code>yellow</code></td>
+                    <td>Number</td>
+                    <td>The minimum number of days between evaluations. Also known as the frequency.</td>
+                </tr>
+                <tr>
+                    <td><code>green</code></td>
+                    <td>Number</td>
+                    <td>The minimum number of days between evaluations. Also known as the frequency.</td>
+                </tr>
+                <tr>
+                    <td><code>blue</code></td>
+                    <td>Number</td>
+                    <td>The minimum number of days between evaluations. Also known as the frequency.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Constructor</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>name</code></td>
+                    <td>String</td>
+                    <td>The name of the agent.</td>
+                </tr>
+                <tr>
+                    <td><code>iNumber</code></td>
+                    <td>Number</td>
+                    <td>The I-Number of the agent.</td>
+                </tr>
+                <tr>
+                    <td><code>team</code></td>
+                    <td>String</td>
+                    <td>The team that the agent is a part of (e.g. Contacts, Outreach).</td>
+                </tr>
+                <tr>
+                    <td><code>finalScoreList</code></td>
+                    <td>Array&lt;Score&gt;</td>
+                    <td>A list of all the final QA scores of the agent.</td>
+                </tr>
+                <tr>
+                    <td><code>prelimScoreList</code></td>
+                    <td>Array&lt;Score&gt;</td>
+                    <td>A list of the preliminary QA scores of the agent.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>getAverage()</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Return</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>source</code></td>
+                    <td>Number | null</td>
+                    <td>Calculates and returns the average of all the agent's final QA scores. If they do not have any
+                        QA scores, it returns null.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>getLastQA()</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Return</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>source</code></td>
+                    <td>Score</td>
+                    <td>Searches for the last evaluation the agent recieved. First it searches the Preliminary list, and
+                        if there are none there, it searches the Final list. If the agent does not have any QA scores,
+                        it returns a default Score.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>getStatus()</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Return</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>source</code></td>
+                    <td>String</td>
+                    <td>Gets the average for the agent and calculates what status they are in.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>getNextQADate()</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Return</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>source</code></td>
+                    <td>Moment</td>
+                    <td>Calculates when the agent's next evaluation should take place. This is based on the agent's last
+                        evaluation score, their status, and the current frequency.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="content-section" id="score">Score</h2>
+        <h3>Constructor</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>percentage</code></td>
+                    <td>Number</td>
+                    <td>The percentage of the evaluation, also known as the QA score.</td>
+                </tr>
+                <tr>
+                    <td><code>date</code></td>
+                    <td>Moment</td>
+                    <td>When the agent was evaluated.</td>
+                </tr>
+                <tr>
+                    <td><code>source</code></td>
+                    <td>String</td>
+                    <td>How the agent contacted the customer. (e.g. Phone, Live Chat).</td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- <section class="code-section">
             <div class="code-card sm">
                 <code>getStatus(source: string)</code>
             </div>
@@ -132,38 +351,7 @@
             <div class="code-card sm">
                 <code>getFormattedDate()</code>
             </div>
-        </section>
-        <p><b>Second,</b> after the agentList is built, it gets sent a few different function that combine the reports
-            and the object. Basically all you need to know is that one function adds all the preliminary scores to the
-            agent. The next function adds all the final scores. And lastly all the New Hires, Leads, DR, and Solutions
-            employees get removed. The result is the finished array that will be used to do the calculations.</p>
-        <h3 class="code-heading">agentList: ARRAY</h3>
-        <section class="code-section">
-            <div class="code-card xl">
-                <code class="flex-column">
-                    <span>agentList [</span>
-                    <span class="tab">Agent {</span>
-                    <span class="tab two">finalScoreList [</span>
-                    <span class="tab three">Score { ... }</span>
-                    <span class="tab two">[</span>
-                    <span class="tab">}</span>
-                    <span>]</span>
-                </code>
-            </div>
-        </section>
-        <p><b>Third,</b> the finished agentList is added as an event listener to four buttons, one for each source. When
-            a button is clicked, (the evaluator wants to see the list for that source) it clears the screen of the
-            previous list and loads the new list.</p>
-        <p>A function is called: buildPrimaryColumn(agentList: array, source: string) that looks through the agentList
-            and sorts it based on when they were last evaluated and what their status is.</p>
-        <h2 class="content-section" id="secondary">Secondary</h2>
-        <h2 class="content-section" id="arbitration">Arbitration</h2>
-        <h2 class="content-section" id="quick">Quick</h2>
-        <h2 class="content-section" id="calculator">Calculator</h2>
-        <h1 class="content-heading">Sources</h1>
-        <hr>
-        <h1 class="content-heading">Scope</h1>
-        <hr>
+        </section> -->
     </main>
     <script src="js/nav.js"></script>
 </body>
