@@ -98,8 +98,8 @@
         <p>From there, it builds a somewhat complicated array of objects that is referred to as the Agent List. It has
             an Agent class that has some member variables, and member functions. Each Agent class also contains a Score
             class.</p>
-        <p class="tip">For more on the Agent class, click here: <a href="#agent">Agent</a></p>
-        <p class="tip">For more on the Score class, click here: <a href="#score">Score</a></p>
+        <p class="tip">For more on the Agent class, click here: <a href="#agent">Agent</a><br>
+            For more on the Score class, click here: <a href="#score">Score</a></p>
         <p>Second, after the agentList is built, it gets sent a few different function that combine the reports
             and the object. Basically all you need to know is that one function adds all the preliminary scores to the
             agent. The next function adds all the final scores. And lastly all the New Hires, Leads, DR, and Solutions
@@ -133,10 +133,33 @@
         <p>Third, the finished agentList is added as an event listener to four buttons, one for each source. When
             a button is clicked, (the evaluator wants to see the list for that source) it clears the screen of the
             previous list and loads the new list.</p>
-        <p>A function is called: buildPrimaryColumn(agentList: array, source: string) that looks through the agentList
-            and sorts it based on when they were last evaluated and what their status is.</p>
+        <p>A function is called: <code>buildPrimaryColumn(agentList: array, source: string)</code> that looks through
+            the agentList and sorts it based on when they were last evaluated and what their status is. From there, it
+            starts to seperate each agent into seperate arrays based on the day they need to be evaluated. There are
+            four buttons on the top of the page that do the same thing, but are seperated by each source.</p>
+        <p>Fourth, after the processing is done, it has an array of arrays that each contain the applicable agent
+            objects for
+            that day. From there it just gets written to the DOM. Each "button" on the primary page has an event
+            listener attached to it that opens up the Preliminary Ticket in a window similar to how TD does it. It also
+            pops up the agent's name and I-Number in an alert.</p>
+        <p>After an evaluation has been completed, the agent gets removed from the page for 24 hours and then they will
+            pop back up after 24 hours and when they need to be evaluated.</p>
         <h2 class="content-section" id="secondary">Secondary</h2>
+        <p>Secondary evaluations are stored on the same ticket as the Primary evaluation. So in order to build the list
+            the list for this page, I just grab a report form TD, ID number 14023. Then I seperate that report into the
+            days the primary was done and display it similiar to the Primary page.</p>
+        <p>Each button that is clicked will open up a custom interface that loads the Calculator and shows the a few
+            other pieces of information. It also show who completed the primary so that the same agent doesn't complete
+            both the primary and secondary. It also has a text area that the evalautor can input any feedback about the
+            evaluation.</p>
+        <p>When the evaluator is done filling everything out, they hit the update button and it updates the ticket
+            automatically.</p>
+        <p class="tip">In the top right hand corner, it shows who is logged in. This provides reassurance to the
+            evaluator that when they update the ticket, they know what account is updating the ticket.</p>
         <h2 class="content-section" id="arbitration">Arbitration</h2>
+        <p>Similiar to the Secondary page, the Arbitration page pulls a report from TD, ID 14024. It then splits up each
+            row into a seperate button and attaches a click listener that pulls up a custom interface similar to the
+            Secondary page.</p>
         <h2 class="content-section" id="quick">Quick</h2>
         <h2 class="content-section" id="calculator">Calculator</h2>
         <h1 class="content-heading">Sources</h1>
@@ -311,6 +334,9 @@
         <h3>getNextQADate()</h3>
         <p>Calculates when the agent's next evaluation should take place. This is based on the agent's last
             evaluation score, their status, and the current frequency.</p>
+        <p class="tip">I modified the Moment object to add three functions:
+            <code>isBusinessDay(), businessAdd(), and businessSubtract()</code> since the frequencies are calculated by
+            business days and not regular days.</p>
         <table>
             <thead>
                 <tr>
@@ -372,6 +398,8 @@
         </table>
         <p class="tab"><i>Returns: Boolean</i></p>
         <h2 class="content-section" id="score">Score</h2>
+        <p class="tip">The Score class uses a Moment object to keep track of time rather than the standard Date object.
+        </p>
         <h3>Constructor</h3>
         <table>
             <thead>
