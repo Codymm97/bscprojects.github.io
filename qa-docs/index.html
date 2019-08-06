@@ -100,10 +100,143 @@
             class.</p>
         <p class="tip">For more on the Agent class, click here: <a href="#agent">Agent</a><br>
             For more on the Score class, click here: <a href="#score">Score</a></p>
-        <p>Second, after the agentList is built, it gets sent a few different function that combine the reports
+        <h3>buildAgentList()</h3>
+        <p>Add each agent to the agentList.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>data</code></td>
+                    <td>Object</td>
+                    <td>A report that has all the employees of the BSC.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="tab"><i>Returns: Array&lt;Agent&gt;</i></p>
+        <p>Second, after the agentList is built, it gets sent to a few different functions that combine the reports
             and the object. Basically all you need to know is that one function adds all the preliminary scores to the
             agent. The next function adds all the final scores. And lastly all the New Hires, Leads, DR, and Solutions
             employees get removed. The result is the finished array that will be used to do the calculations.</p>
+        <h3>removeNewHiresLeadsDRSolutions()</h3>
+        <p>Removes all the New Hires, Leads, DR, and Business Solutions employees from the agentList.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>agentList</code></td>
+                    <td>Array&lt;Agent&gt;</td>
+                    <td>A list of agents and all the data that is needed to calcuate when they need to be evaluated.
+                    </td>
+                </tr>
+                <tr>
+                    <td><code>newHires</code></td>
+                    <td>Object</td>
+                    <td>A report from TD that has all the New Hires.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="tab"><i>Returns: undefined</i></p>
+        <p class="tip">Objects and Arrays are passed by reference in JavaScript, so nothing needs to be returned.</p>
+        <h3>addPrelimScores()</h3>
+        <p>Adds all the Preliminary evalation Scores to the applicable agent.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>agentList</code></td>
+                    <td>Array&lt;Agent&gt;</td>
+                    <td>A list of agents and all the data that is needed to calcuate when they need to be evaluated.
+                    </td>
+                </tr>
+                <tr>
+                    <td><code>data</code></td>
+                    <td>Object</td>
+                    <td>A report from TD that has all the preliminary tickets.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="tab"><i>Returns: undefined</i></p>
+        <h3>addFinalScores()</h3>
+        <p>Adds all the Final evaluation Scores to the applicable agent.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>agentList</code></td>
+                    <td>Array&lt;Agent&gt;</td>
+                    <td>A list of agents and all the data that is needed to calcuate when they need to be evaluated.
+                    </td>
+                </tr>
+                <tr>
+                    <td><code>data</code></td>
+                    <td>Object</td>
+                    <td>A report from TD that has all the final tickets.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="tab"><i>Returns: undefined</i></p>
+        <h3>getSource()</h3>
+        <p>Pulls out the source from a ticket.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>obj</code></td>
+                    <td>Object</td>
+                    <td>The ticket that needs to parsed for the source.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="tab"><i>Returns: String</i></p>
+        <h3>removeButtonClass()</h3>
+        <p>Removes the given class name form all the source buttons.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>name</code></td>
+                    <td>String</td>
+                    <td>The class name to be removed</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="tab"><i>Returns: undefined</i></p>
         <h3>agentList</h3>
         <section class="code-section">
             <div class="code-card">
@@ -133,10 +266,64 @@
         <p>Third, the finished agentList is added as an event listener to four buttons, one for each source. When
             a button is clicked, (the evaluator wants to see the list for that source) it clears the screen of the
             previous list and loads the new list.</p>
+        <h3>buttonOptionClick()</h3>
+        <p>shows which source the user is looking at and the applicable agentList.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>element</code></td>
+                    <td>Object</td>
+                    <td>The button that was clicked to show the source.</td>
+                </tr>
+                <tr>
+                    <td><code>array</code></td>
+                    <td>Array&lt;Agent&gt;</td>
+                    <td>The agentList to be displayed to the user.</td>
+                </tr>
+                <tr>
+                    <td><code>source</code></td>
+                    <td>String</td>
+                    <td>How the agent contacted the customer. (e.g. Phone, Live Chat).</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="tab"><i>Returns: undefined</i></p>
         <p>A function is called: <code>buildPrimaryColumn(agentList: array, source: string)</code> that looks through
             the agentList and sorts it based on when they were last evaluated and what their status is. From there, it
             starts to seperate each agent into seperate arrays based on the day they need to be evaluated. There are
             four buttons on the top of the page that do the same thing, but are seperated by each source.</p>
+        <h3>buildPrimaryColumn()</h3>
+        <p></p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>agentList</code></td>
+                    <td>Array&lt;Agent&gt;</td>
+                    <td>A list of agents and all the data that is needed to calcuate when they need to be evaluated.
+                    </td>
+                </tr>
+                <tr>
+                    <td><code>source</code></td>
+                    <td>String</td>
+                    <td>How the agent contacted the customer. (e.g. Phone, Live Chat).</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="tab"><i>Returns: undefined</i></p>
         <p>Fourth, after the processing is done, it has an array of arrays that each contain the applicable agent
             objects for
             that day. From there it just gets written to the DOM. Each "button" on the primary page has an event
