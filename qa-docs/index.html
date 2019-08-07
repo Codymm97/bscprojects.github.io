@@ -423,47 +423,133 @@
         <p>Secondary evaluations are stored on the same ticket as the Primary evaluation. So in order to build the list
             the list for this page, I just grab a report form TD, ID number 14023. Then I seperate that report into the
             days the primary was done and display it similiar to the Primary page.</p>
-            <h3>getAndDisplayList()</h3>
-            <p>Fetches the report from TD and then displays it to the user.</p>
-            <p class="tab"><i>Returns: undefined</i></p>
-            <h3>parseList()</h3>
-            <p>Splits the report from TD into different days/sub-lists.</p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Parameters</th>
-                        <th>Type</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><code>data</code></td>
-                        <td>Array&lt;Object&gt;</td>
-                        <td>A list of Preliminary tickets that need to have their secondary evaluations completed.</td>
-                    </tr>
-                </tbody>
-            </table>
-            <p class="tab"><i>Returns: Array&lt;Array&lt;Object&gt;&gt;</i></p>
-            <h3>displayList()</h3>
-            <p></p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Parameters</th>
-                        <th>Type</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><code>data</code></td>
-                        <td>Array&lt;Object&gt;</td>
-                        <td>A list of Preliminary tickets that need to have their secondary evaluations completed.</td>
-                    </tr>
-                </tbody>
-            </table>
-            <p class="tab"><i>Returns: Array&lt;Object&gt;</i></p>
+        <h3>getAndDisplayList()</h3>
+        <p>Fetches the report from TD and then displays it to the user.</p>
+        <p class="tab"><i>Returns: undefined</i></p>
+        <h3>parseList()</h3>
+        <p>Splits the report from TD into different days/sub-lists.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>data</code></td>
+                    <td>Array&lt;Object&gt;</td>
+                    <td>A list of Preliminary tickets that need to have their secondary evaluations completed.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="tab"><i>Returns: Array&lt;Array&lt;Object&gt;&gt;</i></p>
+        <h3>displayList()</h3>
+        <p>Adds an event listener to each button and shows them to the user.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>data</code></td>
+                    <td>Array&lt;Array&lt;Object&gt;&gt;</td>
+                    <td>A list of Preliminary tickets that need to have their secondary evaluations completed.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="tab"><i>Returns: undefined</i></p>
+        <h3>viewTicket()</h3>
+        <p>Pulls up the ticket using the custom interface.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>event</code></td>
+                    <td>Object</td>
+                    <td>The click event that is captured when the elemtn is clicked on.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="tab"><i>Returns: undefined</i></p>
+        <h3>displayTicket()</h3>
+        <p>Shows the custom interface, opens up the ticket in TD in a new window, and automatically downloads any
+            attachments.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>ticket</code></td>
+                    <td>Object</td>
+                    <td>The ticket object that was fetched from TD.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="tab"><i>Returns: undefined</i></p>
+        <h3>buildCalc()</h3>
+        <p>Builds and appends the calculator to the custom interface.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>type</code></td>
+                    <td>String</td>
+                    <td>How the agent contacted the customer. (e.g. Phone, Live Chat).</td>
+                </tr>
+                <tr>
+                    <td><code>ticket</code></td>
+                    <td>Object</td>
+                    <td>The ticket object that was fetched from TD.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="tab"><i>Returns: Object</i></p>
+        <h3>calculateScore()</h3>
+        <p>Calculates the score from the calculator and displays the totla score along with the total earned and total
+            possible.</p>
+        <p class="tab"><i>Returns: undefined</i></p>
+        <h3>addAllOptions()</h3>
+        <p>Adds all the calculator options together.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>array</code></td>
+                    <td>Array&lt;Object&gt;</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="tab"><i>Returns: Array&lt;Number&gt;</i></p>
         <p>Each button that is clicked will open up a custom interface that loads the Calculator and shows the a few
             other pieces of information. It also show who completed the primary so that the same agent doesn't complete
             both the primary and secondary. It also has a text area that the evalautor can input any feedback about the
