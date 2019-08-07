@@ -368,7 +368,7 @@
             </tbody>
         </table>
         <p class="tab"><i>Returns: undefined</i></p>
-        <h3>buildListSection()</h3>
+        <h3>buildListSections()</h3>
         <p>Builds the master list of elements that are needed to be turned into DOM elements.</p>
         <table>
             <thead>
@@ -392,7 +392,7 @@
                 </tr>
             </tbody>
         </table>
-        <p class="tab"><i>Returns: Array&lt;Object&gt;</i></p>
+        <p class="tab"><i>Returns: Array&lt;Array&lt;Object&gt;&gt;</i></p>
         <h3>sortSubAgentList()</h3>
         <p>Sorts the array alphebetically.</p>
         <table>
@@ -423,6 +423,47 @@
         <p>Secondary evaluations are stored on the same ticket as the Primary evaluation. So in order to build the list
             the list for this page, I just grab a report form TD, ID number 14023. Then I seperate that report into the
             days the primary was done and display it similiar to the Primary page.</p>
+            <h3>getAndDisplayList()</h3>
+            <p>Fetches the report from TD and then displays it to the user.</p>
+            <p class="tab"><i>Returns: undefined</i></p>
+            <h3>parseList()</h3>
+            <p>Splits the report from TD into different days/sub-lists.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Parameters</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>data</code></td>
+                        <td>Array&lt;Object&gt;</td>
+                        <td>A list of Preliminary tickets that need to have their secondary evaluations completed.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="tab"><i>Returns: Array&lt;Array&lt;Object&gt;&gt;</i></p>
+            <h3>displayList()</h3>
+            <p></p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Parameters</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>data</code></td>
+                        <td>Array&lt;Object&gt;</td>
+                        <td>A list of Preliminary tickets that need to have their secondary evaluations completed.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="tab"><i>Returns: Array&lt;Object&gt;</i></p>
         <p>Each button that is clicked will open up a custom interface that loads the Calculator and shows the a few
             other pieces of information. It also show who completed the primary so that the same agent doesn't complete
             both the primary and secondary. It also has a text area that the evalautor can input any feedback about the
