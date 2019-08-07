@@ -300,7 +300,7 @@
             starts to seperate each agent into seperate arrays based on the day they need to be evaluated. There are
             four buttons on the top of the page that do the same thing, but are seperated by each source.</p>
         <h3>buildPrimaryColumn()</h3>
-        <p></p>
+        <p>Turns the array of objects into HTML DOM elements and prints them to the screen.</p>
         <table>
             <thead>
                 <tr>
@@ -320,6 +320,94 @@
                     <td><code>source</code></td>
                     <td>String</td>
                     <td>How the agent contacted the customer. (e.g. Phone, Live Chat).</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="tab"><i>Returns: undefined</i></p>
+        <h3>parseList()</h3>
+        <p>Filters out all the employees who are not authorized to work on the specified source.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>agentList</code></td>
+                    <td>Array&lt;Agent&gt;</td>
+                    <td>A list of agents and all the data that is needed to calcuate when they need to be evaluated.
+                    </td>
+                </tr>
+                <tr>
+                    <td><code>source</code></td>
+                    <td>String</td>
+                    <td>How the agent contacted the customer. (e.g. Phone, Live Chat).</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="tab"><i>Returns: Array&lt;Object&gt;</i></p>
+        <h3>sortAgentListByDate()</h3>
+        <p></p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>array</code></td>
+                    <td>Array&lt;Object&gt;</td>
+                    <td>A list of agents and their next evalution date.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="tab"><i>Returns: undefined</i></p>
+        <h3>buildListSection()</h3>
+        <p>Builds the master list of elements that are needed to be turned into DOM elements.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>data</code></td>
+                    <td>Array&lt;Agent&gt;</td>
+                    <td>A list of agents and all the data that is needed to calcuate when they need to be evaluated.
+                    </td>
+                </tr>
+                <tr>
+                    <td><code>source</code></td>
+                    <td>String</td>
+                    <td>How the agent contacted the customer. (e.g. Phone, Live Chat).</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="tab"><i>Returns: Array&lt;Object&gt;</i></p>
+        <h3>sortSubAgentList()</h3>
+        <p>Sorts the array alphebetically.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>array</code></td>
+                    <td>Array&lt;Object&gt;</td>
+                    <td>A list of agents and their next evalution date.</td>
                 </tr>
             </tbody>
         </table>
