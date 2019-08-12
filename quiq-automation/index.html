@@ -31,6 +31,8 @@
         <a class="nav-link" href="#building">Building</a>
         <a class="nav-link" href="#errors">Errors</a>
         <a class="nav-link" href="#debugging">Debugging</a>
+        <h3 class="nav-heading">Classes</h3>
+        <a class="nav-link" href="#application">Application</a>
         <h3 class="nav-heading">External Resources</h3>
         <a class="nav-link" href="https://api.teamdynamix.com/TDWebApi/" target="_blank">TeamDynamix Web API</a>
         <a class="nav-link" href="https://momentjs.com/" target="_blank">Moment.js</a>
@@ -135,48 +137,6 @@
             </tbody>
         </table>
         <p class="tab"><i>Returns: Object</i></p>
-        <h3>getAppObject()</h3>
-        <p>Puts all the information inside an object and returns it.</p>
-        <table>
-            <thead>
-                <tr>
-                    <th>Parameters</th>
-                    <th>Type</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><code>type</code></td>
-                    <td>Number</td>
-                    <td>The type ID for that application.</td>
-                </tr>
-                <tr>
-                    <td><code>form</code></td>
-                    <td>Number</td>
-                    <td>The form ID for that application.</td>
-                </tr>
-                <tr>
-                    <td><code>status</code></td>
-                    <td>Number</td>
-                    <td>The status ID for that application.</td>
-                </tr>
-                <tr>
-                    <td><code>id</code></td>
-                    <td>Number</td>
-                    <td>The ID for that application.</td>
-                </tr>
-                <tr>
-                    <td><code>customAttributes?</code></td>
-                    <td>Array</td>
-                    <td>Any custom attributes that should be added to the ticket/form.</td>
-                </tr>
-            </tbody>
-        </table>
-        <p class="tab"><i>Returns: Object</i></p>
-        <p class="tip"><code>getApplication()</code> is the parent function that calls <code>getAppObject()</code>. The
-            first function sends the second function unique data, and it just puts it into and object and returns it. It
-            would be DRY the other way it was written.</p>
         <h3>getSource()</h3>
         <p>Determines which source the chat came from: SMS, Facebook, or a regular Chat.</p>
         <table>
@@ -208,6 +168,96 @@
             it through the console which is arguably better to use than the command line. However, before any
             version/update is pushed to the server, any debugging methods need to be either deleted or commented out so
             that no sensitive information gets exposed to the wild.</p>
+        <h1 class="content-heading">Classes</h1>
+        <hr>
+        <h2 class="content-section" id="application">Application</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>agentName</code></td>
+                    <td>String</td>
+                    <td>The name of the Agent.</td>
+                </tr>
+                <tr>
+                    <td><code>isLvl2</code></td>
+                    <td>Boolean</td>
+                    <td>Whether the converstation needs to be sent to Level 2 or not.</td>
+                </tr>
+                <tr>
+                    <td><code>type</code></td>
+                    <td>Number</td>
+                    <td>The TypeID for the ticket.</td>
+                </tr>
+                <tr>
+                    <td><code>form</code></td>
+                    <td>Number</td>
+                    <td>What form the ticket shold be put into.</td>
+                </tr>
+                <tr>
+                    <td><code>status</code></td>
+                    <td>Number</td>
+                    <td>The StatusID for the ticket.</td>
+                </tr>
+                <tr>
+                    <td><code>id</code></td>
+                    <td>Number</td>
+                    <td>The application id (AppID).</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Constructor</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>agentName</code></td>
+                    <td>String</td>
+                    <td>The name of the Agent</td>
+                </tr>
+                <tr>
+                    <td><code>isLvl2</code></td>
+                    <td>Boolean</td>
+                    <td>Whether the converstation needs to be sent to Level 2 or not.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>addCustomAttribute()</h3>
+        <p>Adds a custom attribute to the array of attributes.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>id</code></td>
+                    <td>Number</td>
+                    <td>The ID of the attribute to be added.</td>
+                </tr>
+                <tr>
+                    <td><code>value</code></td>
+                    <td>Number</td>
+                    <td>The Value that should be represented in the attribute.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="tab"><i>Returns: undefined</i></p>
     </main>
     <script src="js/nav.js"></script>
 </body>
