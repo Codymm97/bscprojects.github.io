@@ -88,6 +88,7 @@
             the main element appears again.</p>
         <h1 class="content-heading">Evaluations</h1>
         <hr>
+        <!-- START Primary Page -->
         <h2 class="content-section" id="primary">Primary</h2>
         <p>This page is probably the most important page on the entire site. This page tells the evaluator who they need
             to evaluate next. There is also a lot of complicated calculations going on on this page. I will break it
@@ -419,6 +420,8 @@
             pops up the agent's name and I-Number in an alert.</p>
         <p>After an evaluation has been completed, the agent gets removed from the page for 24 hours and then they will
             pop back up after 24 hours and when they need to be evaluated.</p>
+        <!-- END Primary Page -->
+        <!-- START Secondary Page -->
         <h2 class="content-section" id="secondary">Secondary</h2>
         <p>Secondary evaluations are stored on the same ticket as the Primary evaluation. So in order to build the list
             the list for this page, I just grab a report form TD, ID number 14023. Then I seperate that report into the
@@ -545,11 +548,49 @@
                 <tr>
                     <td><code>array</code></td>
                     <td>Array&lt;Object&gt;</td>
-                    <td></td>
+                    <td>All the questions to add together.</td>
                 </tr>
             </tbody>
         </table>
         <p class="tab"><i>Returns: Array&lt;Number&gt;</i></p>
+        <h3>download()</h3>
+        <p>Automatically downloads a file for the user.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>url</code></td>
+                    <td>String</td>
+                    <td>The url to download the TD attachment from.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="tab"><i>Returns: undefined</i></p>
+        <h3>openLikeTD()</h3>
+        <p>Opens up a pop-up window that replicates how TD opens a new window.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>url</code></td>
+                    <td>String</td>
+                    <td>The url to open.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="tab"><i>Returns: undefined</i></p>
         <p>Each button that is clicked will open up a custom interface that loads the Calculator and shows the a few
             other pieces of information. It also show who completed the primary so that the same agent doesn't complete
             both the primary and secondary. It also has a text area that the evalautor can input any feedback about the
@@ -558,10 +599,37 @@
             automatically.</p>
         <p class="tip">In the top right hand corner, it shows who is logged in. This provides reassurance to the
             evaluator that when they update the ticket, they know what account is updating the ticket.</p>
+        <h3>publishTicket()</h3>
+        <p>Builds and updates the ticket in TD.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>type</code></td>
+                    <td>String</td>
+                    <td>How the agent contacted the customer. (e.g. Phone, Live Chat).</td>
+                </tr>
+                <tr>
+                    <td><code>ticketId</code></td>
+                    <td>Number</td>
+                    <td>The ticket ID to update.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="tab"><i>Returns: undefined</i></p>
+        <!-- END Secondary Page -->
+        <!-- START Arbitration Page -->
         <h2 class="content-section" id="arbitration">Arbitration</h2>
         <p>Similiar to the Secondary page, the Arbitration page pulls a report from TD, ID 14024. It then splits up each
             row into a seperate button and attaches a click listener that pulls up a custom interface similar to the
             Secondary page.</p>
+        <!-- END Arbitration Page -->
         <h2 class="content-section" id="quick">Quick</h2>
         <h2 class="content-section" id="calculator">Calculator</h2>
         <h1 class="content-heading">Sources</h1>
