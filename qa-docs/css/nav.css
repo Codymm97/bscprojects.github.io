@@ -27,4 +27,6 @@ nav a:hover {
 
 nav a.active {
     border-right: 5px solid var(--accent);
+    font-weight: bold;
+    color: var(--accent);
 }
