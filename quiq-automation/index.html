@@ -120,9 +120,9 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><code>application</code></td>
+                    <td><code>tag</code></td>
                     <td>String</td>
-                    <td>The topic that the agent specified (e.g. Accounting, IT).</td>
+                    <td>The tag that the agent specified.</td>
                 </tr>
                 <tr>
                     <td><code>agentName</code></td>
@@ -163,6 +163,14 @@
         <p>Along with updateing the feed item, it notifies someone through email so that nothing falls through the
             cracks.</p>
         <p class="tip">The email will have to be updated manually whenever responsibility for the project changes.</p>
+        <p>If there is an error with the server, not the code on the server, and Quiq does not get an immediate
+            response, it will throw an error.</p>
+        <p>Because we store our server on Heroku, under the free license, the server will go idle after 30 minutes of
+            inactivity. When Quiq sends a request to the server and it is idle, it will wake up the server and process
+            it. However, if the server takes longer than normal to boot up, Quiq will not get a response and throw and
+            error that will be emailed to every Quiq Admin. Luckily, Quiq always sends an additional request if there
+            was a problem so if the server does take a little bit to boot up, it can create a ticket on the second
+            request. This will send an email saying something along the lines "{{HTTP METHOD}} {{SERVER URL}} timed out."</p>
         <h2 class="content-section" id="debugging">Debugging</h2>
         <p>If debugging is necessary, there is an endpoint that will send information to the client so that you can view
             it through the console which is arguably better to use than the command line. However, before any
@@ -297,22 +305,121 @@
         <p class="tab"><i>Returns: undefined</i></p>
         <h3>setAdmissions()</h3>
         <p>Adds all the necessary attributes for the Admissions form.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>tag</code></td>
+                    <td>String</td>
+                    <td>The agent-chosen tag for this application.</td>
+                </tr>
+            </tbody>
+        </table>
         <p class="tab"><i>Returns: undefined</i></p>
         <p class="tip">There are multiple forms in the BYUI Tickets application.</p>
         <h3>setGeneralPartial()</h3>
         <p>Adds all the necessary attributes for part of BYUI Tickets, since a lot of forms use the same values.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>status?</code></td>
+                    <td>Number</td>
+                    <td>The status of the form; defaulted to open</td>
+                </tr>
+            </tbody>
+        </table>
         <p class="tab"><i>Returns: undefined</i></p>
         <h3>setGeneral()</h3>
         <p>Adds all the necessary attributes for the General form.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>tag</code></td>
+                    <td>String</td>
+                    <td>The agent-chosen tag for this application.</td>
+                </tr>
+            </tbody>
+        </table>
         <p class="tab"><i>Returns: undefined</i></p>
         <h3>setAdvising()</h3>
         <p>Adds all the necessary attributes for the Advising form.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>tag</code></td>
+                    <td>String</td>
+                    <td>The agent-chosen tag for this application.</td>
+                </tr>
+            </tbody>
+        </table>
         <p class="tab"><i>Returns: undefined</i></p>
         <h3>setFeedback()</h3>
         <p>Adds all the necessary attributes for the Course/Instructor Feedback form.</p>
         <p class="tab"><i>Returns: undefined</i></p>
         <h3>setHealthCenter()</h3>
         <p>Adds all the necessary attributes for the Health Center form.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>tag</code></td>
+                    <td>String</td>
+                    <td>The agent-chosen tag for this application.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="tab"><i>Returns: undefined</i></p>
+        <h3>setIT()</h3>
+        <p>Adds all the necessary attributes for the IT form.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>tag</code></td>
+                    <td>String</td>
+                    <td>The agent-chosen tag for this application.</td>
+                </tr>
+            </tbody>
+        </table>
         <p class="tab"><i>Returns: undefined</i></p>
         <h3>setUniversityStore()</h3>
         <p>Adds all the necessary attributes for the University Store form.</p>
@@ -322,9 +429,41 @@
         <p class="tab"><i>Returns: undefined</i></p>
         <h3>setFA()</h3>
         <p>Adds all the necessary attributes for the Financial Aid form.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>tag</code></td>
+                    <td>String</td>
+                    <td>The agent-chosen tag for this application.</td>
+                </tr>
+            </tbody>
+        </table>
         <p class="tab"><i>Returns: undefined</i></p>
         <h3>setSRR()</h3>
         <p>Adds all the necessary attributes for the SRR form.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>tag</code></td>
+                    <td>String</td>
+                    <td>The agent-chosen tag for this application.</td>
+                </tr>
+            </tbody>
+        </table>
         <p class="tab"><i>Returns: undefined</i></p>
     </main>
     <script src="js/nav.js"></script>
