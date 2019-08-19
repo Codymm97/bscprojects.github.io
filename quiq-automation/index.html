@@ -27,10 +27,10 @@
         <a class="nav-link" href="#liveengage">LiveEngage</a>
         <h3 class="nav-heading">Overview</h3>
         <a class="nav-link" href="#root">Root</a>
-        <h3 class="nav-heading">Creating the Ticket</h3>
-        <a class="nav-link" href="#building">Building</a>
         <a class="nav-link" href="#errors">Errors</a>
         <a class="nav-link" href="#debugging">Debugging</a>
+        <h3 class="nav-heading">Creating the Ticket</h3>
+        <a class="nav-link" href="#building">Building</a>
         <h3 class="nav-heading">Classes</h3>
         <a class="nav-link" href="#application">Application</a>
         <h3 class="nav-heading">External Resources</h3>
@@ -77,6 +77,26 @@
         <p>Once the root gets the appropriate request, it checks to make sure it is from Quiq and the BSC was the person
             who closed the chat. This is so that if someone were to send a bogus request to the server, it would not be
             processed and added to TD.</p>
+        <h2 class="content-section" id="errors">Errors</h2>
+        <p>If any errors occur, it compiles the object that was created and the error that happend. Then it adds it as a
+            feed item to an Error Catching ticket in TD.</p>
+        <p>Along with updateing the feed item, it notifies someone through email so that nothing falls through the
+            cracks.</p>
+        <p class="tip">The email will have to be updated manually whenever responsibility for the project changes.</p>
+        <p>If there is an error with the server, not the code on the server, and Quiq does not get an immediate
+            response, it will throw an error.</p>
+        <p>Because we store our server on Heroku, under the free license, the server will go idle after 30 minutes of
+            inactivity. When Quiq sends a request to the server and it is idle, it will wake up the server and process
+            it. However, if the server takes longer than normal to boot up, Quiq will not get a response and throw and
+            error that will be emailed to every Quiq Admin. Luckily, Quiq always sends an additional request if there
+            was a problem so if the server does take a little bit to boot up, it can create a ticket on the second
+            request. This will send an email saying something along the lines "{{HTTP METHOD}} {{SERVER URL}} timed
+            out."</p>
+        <h2 class="content-section" id="debugging">Debugging</h2>
+        <p>If debugging is necessary, there is an endpoint that will send information to the client so that you can view
+            it through the console which is arguably better to use than the command line. However, before any
+            version/update is pushed to the server, any debugging methods need to be either deleted or commented out so
+            that no sensitive information gets exposed to the wild.</p>
         <h1 class="content-heading">Creating The Ticket</h1>
         <hr>
         <h2 class="content-section" id="building">Building</h2>
@@ -157,25 +177,6 @@
         </table>
         <p class="tab"><i>Returns: Number</i></p>
         <p>After everything is complied, that data gets fed into the ticket object and is sent off to TD.</p>
-        <h2 class="content-section" id="errors">Errors</h2>
-        <p>If any errors occur, it compiles the object that was created and the error that happend. Then it adds it as a
-            feed item to an Error Catching ticket in TD.</p>
-        <p>Along with updateing the feed item, it notifies someone through email so that nothing falls through the
-            cracks.</p>
-        <p class="tip">The email will have to be updated manually whenever responsibility for the project changes.</p>
-        <p>If there is an error with the server, not the code on the server, and Quiq does not get an immediate
-            response, it will throw an error.</p>
-        <p>Because we store our server on Heroku, under the free license, the server will go idle after 30 minutes of
-            inactivity. When Quiq sends a request to the server and it is idle, it will wake up the server and process
-            it. However, if the server takes longer than normal to boot up, Quiq will not get a response and throw and
-            error that will be emailed to every Quiq Admin. Luckily, Quiq always sends an additional request if there
-            was a problem so if the server does take a little bit to boot up, it can create a ticket on the second
-            request. This will send an email saying something along the lines "{{HTTP METHOD}} {{SERVER URL}} timed out."</p>
-        <h2 class="content-section" id="debugging">Debugging</h2>
-        <p>If debugging is necessary, there is an endpoint that will send information to the client so that you can view
-            it through the console which is arguably better to use than the command line. However, before any
-            version/update is pushed to the server, any debugging methods need to be either deleted or commented out so
-            that no sensitive information gets exposed to the wild.</p>
         <h1 class="content-heading">Classes</h1>
         <hr>
         <h2 class="content-section" id="application">Application</h2>
