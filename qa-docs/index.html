@@ -42,7 +42,7 @@
         <a class="nav-link" href="#agent">Agent</a>
         <a class="nav-link" href="#score">Score</a>
         <h3 class="nav-heading">External Resources</h3>
-        <a class="nav-link" href="https://api.teamdynamix.com/TDWebApi/" target="_blank">TeamDynamix Web API</a>
+        <a class="nav-link" href="https://td.byui.edu/TDWebApi/" target="_blank">TeamDynamix Web API</a>
         <a class="nav-link" href="https://momentjs.com/" target="_blank">Moment.js</a>
         <a class="nav-link" href="https://jquery.com/" target="_blank">jQuery</a>
         <a class="nav-link" href="https://nodejs.org/en/" target="_blank">Node.js</a>
@@ -55,17 +55,12 @@
             builds, jQuery was used
             and with each update it is fitered out in preference for vanilla web tools, unless it is easier to use
             jQuery, which is the case for the calculator.</p>
-        <p>The server side of the site is written in Node.js</a>. All
+        <p>All
             the code is stored on <a href="https://github.com/" target="_blank">Github</a> and then deployed on <a
                 href="https://heroku.com" target="_blank">Heroku</a>.</p>
         <h2 class="content-section" id="setup">Setup</h2>
-        <p>In order to work on this project, You will need to install a few things:</p>
-        <ul>
-            <li>A Text Editor of your choice</li>
-            <li><a href="https://git-scm.com/" target="_blank">Git</a></li>
-            <li><a href="https://nodejs.org/en/" target="_blank">Node.js</a></li>
-        </ul>
-        <p>Once you have those things, you will need to add yourself as a collaborator to the project on Github and then
+        <p>Once you have the specified tools installed, you will need to add yourself as a collaborator to the project
+            on Github and then
             you can clone it onto your local machine. From there you can do whatever you need to do the site.</p>
         <h2 class="content-section" id="login">Login</h2>
         <p>Now that we are all set up and ready to go, lets walk through the site and dive deep into what everything
@@ -93,7 +88,7 @@
         <p>This page is probably the most important page on the entire site. This page tells the evaluator who they need
             to evaluate next. There is also a lot of complicated calculations going on on this page. I will break it
             down into steps to help with the snackability.</p>
-        <p>First, it makes 4 requests to get 4 different reports. Their IDs are 14236, 4807, 13996, 13990 and
+        <p>First, it makes 5 requests to get 5 different reports. Their IDs are 14236, 4807, 13996, 13990, 15528 and
             after everything is done, it has a report that has all the employees in the BSC, all the New Hires, all the
             final evaluation scores for each employee and also their preliminary scores.</p>
         <p>From there, it builds a somewhat complicated array of objects that is referred to as the Agent List. It has
@@ -124,8 +119,8 @@
             and the object. Basically all you need to know is that one function adds all the preliminary scores to the
             agent. The next function adds all the final scores. And lastly all the New Hires, Leads, DR, and Solutions
             employees get removed. The result is the finished array that will be used to do the calculations.</p>
-        <h3>removeNewHiresLeadsDRSolutions()</h3>
-        <p>Removes all the New Hires, Leads, DR, and Business Solutions employees from the agentList.</p>
+        <h3>addAdvisingAgents()</h3>
+        <p>Adds all the advising agents to the agentList.</p>
         <table>
             <thead>
                 <tr>
@@ -142,9 +137,9 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><code>newHires</code></td>
-                    <td>Object</td>
-                    <td>A report from TD that has all the New Hires.</td>
+                    <td><code>advisingAgents</code></td>
+                    <td>Array&lt;&gt;</td>
+                    <td>An array of all the advising agents that we will need to evaluate.</td>
                 </tr>
             </tbody>
         </table>
@@ -200,6 +195,31 @@
             </tbody>
         </table>
         <p class="tab"><i>Returns: undefined</i></p>
+        <h3>removeNewHiresLeadsDRSolutions()</h3>
+        <p>Removes all the New Hires, Leads, DR, and Business Solutions employees from the agentList.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameters</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>agentList</code></td>
+                    <td>Array&lt;Agent&gt;</td>
+                    <td>A list of agents and all the data that is needed to calcuate when they need to be evaluated.
+                    </td>
+                </tr>
+                <tr>
+                    <td><code>newHires</code></td>
+                    <td>Object</td>
+                    <td>A report from TD that has all the New Hires.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="tab"><i>Returns: undefined</i></p>
         <h3>getSource()</h3>
         <p>Pulls out the source from a ticket.</p>
         <table>
@@ -244,20 +264,16 @@
                 <code class="flex-column">
                     <span>[</span>
                     <span class="tab">Agent: {</span>
-                    <span class="tab two">blue: 12</span>
                     <span class="tab two">finalScoreList: [</span>
                     <span class="tab three">Score: { ... }</span>
                     <span class="tab two">]</span>
-                    <span class="tab two">green: 10</span>
+                    <span class="tab two">frequency: 10</span>
                     <span class="tab two">iNumber: 123456789</span>
                     <span class="tab two">name: "John Doe"</span>
-                    <span class="tab two">orange: 5</span>
                     <span class="tab two">prelimScoreList: [</span>
                     <span class="tab three">Score: { ... }</span>
                     <span class="tab two">]</span>
-                    <span class="tab two">red: 3</span>
                     <span class="tab two">team: Contacts</span>
-                    <span class="tab two">yellow: 7</span>
                     <span class="tab">}</span>
                     <span>]</span>
                 </code>
@@ -626,7 +642,8 @@
         <!-- END Secondary Page -->
         <!-- START Arbitration Page -->
         <h2 class="content-section" id="arbitration">Arbitration</h2>
-        <p>Similiar to the Secondary page, the Arbitration page pulls a report from TD, ID 14024. It then splits up each
+        <p>Similiar to the Secondary page, the Arbitration page pulls a report from TD, ID: 14024. It then splits up
+            each
             row into a seperate button and attaches a click listener that pulls up a custom interface similar to the
             Secondary page.</p>
         <!-- END Arbitration Page -->
@@ -678,29 +695,9 @@
                     <td>A list of the preliminary QA scores of the agent.</td>
                 </tr>
                 <tr>
-                    <td><code>red</code></td>
+                    <td><code>frequeny</code></td>
                     <td>Number</td>
-                    <td>The minimum number of days between evaluations. Also known as the frequency.</td>
-                </tr>
-                <tr>
-                    <td><code>orange</code></td>
-                    <td>Number</td>
-                    <td>The minimum number of days between evaluations. Also known as the frequency.</td>
-                </tr>
-                <tr>
-                    <td><code>yellow</code></td>
-                    <td>Number</td>
-                    <td>The minimum number of days between evaluations. Also known as the frequency.</td>
-                </tr>
-                <tr>
-                    <td><code>green</code></td>
-                    <td>Number</td>
-                    <td>The minimum number of days between evaluations. Also known as the frequency.</td>
-                </tr>
-                <tr>
-                    <td><code>blue</code></td>
-                    <td>Number</td>
-                    <td>The minimum number of days between evaluations. Also known as the frequency.</td>
+                    <td>The minimum number of days between evaluations. </td>
                 </tr>
             </tbody>
         </table>
